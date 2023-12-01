@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css">
+    <link rel="stylesheet" href="css/antd.min.css">
+</head>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .TableContainer {
+        max-height: 450px;
+        /* Ajusta según tus necesidades */
+        overflow-y: auto;
+    }
+
+    .Container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #contenedor2 {
+        width: 30%;
+        /* ajusta el ancho según tus necesidades */
+    }
+
+    #contenedor {
+        width: 100%;
+        /* ajusta el ancho según tus necesidades */
+    }
+
+    #reciboVenta {
+        border: 2px solid black;
+        width: 310px;
+    }
+    .titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(252, 14, 14, 0.74);
+        border-radius: 10px;
+    }
+    #descripcionVenta{
+        width: 700px;
+    }
+</style>
+
+<body>
+    <nav style="border-radius: 0%;">
+        <img src="css/Logo.png" alt="Logo">
+        <a href="AgregarSocio.html" class="button">Agregar nuevo socio</a>
+        <a href="PagoCuota.html" class="button">Estado de Cuotas</a>
+        <a href="venta.html" class="button">Ventas</a>
+        <a href="CierreDeCaja.html" class="button">Contabilidad</a>
+        <a href="Merca.html" class="button">Mercaderia</a>
+        <br>
+        <br>
+        <a href="Acerca.html" class="button">Sobre nosotros</a>
+    </nav>
+    <main>
+        <div class="Container" style="width: 1000px;">
+           <!-- <div id="contenedor 2">
+                <div class="titulo"><h1>Recibo</h1></div>
+                <br>
+                <div id="reciboVenta"></div>
+            </div>-->
+            <div id="contenedor">
+                <div class="titulo" style="margin-top: 20px;"><h1>Venta</h1></div>
+                <br>
+                <section class="TableContainer" style="height: 600px;">
+                <div id="venta">
+                    <select class="Form_input" name="name" id="selectMercaderia" style="width: 165px;">
+                        <option value="" disabled selected>Agregar mercaderia</option>
+                    </select>
+                    <input class="Form_input" type="text" id="cantidadMercaderia" placeholder="Ingrese la cantidad">
+                    <input class="Form_input" type="text" id="precioMercaderia" placeholder="Ingrese el precio" style="width: 160px;">
+                    <br>
+                    <select class="Form_input" name="name" id="selectCuota" style="width: 165px;"> 
+                        <option value="" disabled selected>Agregar cuota</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                    <input class="Form_input" type="text" id="precioCuota" placeholder="Ingrese el precio">
+                    <br>
+                    <select class="Form_input" name="name" id="selectSeguro" style="width: 165px;">
+                        <option value="" disabled selected>Agregar seguro</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                    <input class="Form_input" type="text" id="precioSeguro" placeholder="Ingrese el precio">
+                    <br>
+                    <input class="Form_input" type="text" id="socioNombre" placeholder="Nombre del socio" style="width: 165px;">
+                    <input class="Form_input" type="text" id="socioDNI" placeholder="DNI del socio">
+                    <select name="Form_input" name="name" id="formaDePago" class="Form_input" style="width: 160px;">
+                        <option value="" disabled selected>Forma de pago</option>
+                        <option value="Efectivo">Efectivo</option>
+                        <option value="Tarjeta de Debito">Tarjeta de Debito</option>
+                        <option value="Trasnferencia">Transferencia</option>
+                        <option value="Tarjeta de Credito">Tarjeta de Credito</option>
+                    </select>
+                    <br>
+                    <input type="text" id="descripcionVenta" class="Form_input" placeholder="Descripcion de la venta (OPCIONAL)">
+                    <button class="button button--primary" onclick="GuardarVenta()" id="guardar">Guardar Venta</button>
+
+                        <table class="Crud_table" id="tablaVenta">
+                            <thead>
+                                <tr>
+                                    <th>Socio</th>
+                                    <th>DNI</th>
+                                    <th>Mercaderia</th>
+                                    <th>Cuota</th>
+                                    <th>Seguro</th>
+                                    <th>Total</th>
+                                    <th>Forma de pago</th>
+                                    <th>Descripcion</th>
+                                    <th>Funciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="TableBody"></tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="ventas.js"></script>
+    <script src="SociosUnion.js"></script>
+</body>
+
+</html>

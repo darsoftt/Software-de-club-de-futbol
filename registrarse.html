@@ -1,0 +1,84 @@
+
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css">
+    <style>
+        body {
+            background-image: url('css/fondo2.png'); /* Ruta de tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 40px;
+            max-width: 400px;
+        }
+
+        .logo {
+            width: 150px; /* Tamaño personalizado para el logotipo */
+            height: 150px; /* Tamaño personalizado para el logotipo */
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-item {
+            margin-bottom: 20px;
+        }
+        #btnLogin {
+            background-color: #ff1818; /* Color de fondo */
+            color: #fff; /* Color de texto */
+            font-size: 16px;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+    <title>Escuela de Fut</title>
+    <script src="Login.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <img src="css/Logo.png" alt="Logo" class="logo">
+        <h1 class="title">Registrarse</h1>
+        <form>
+            <div class="form-item">
+                <input type="text" id="usuario" class="ant-input" placeholder="Usuario">
+            </div>
+            <div class="form-item">
+                <input type="password" id="contraseña" class="ant-input" placeholder="Contraseña">
+            </div>
+            <div class="form-item">
+                <input type="button" value="Registrarse" id="btnLogin" onclick="registros()">
+            </div>
+        </form>
+    </div>
+    <div id="mensajeError" style="display: none;"></div>
+    <!-- Mueve esta etiqueta de script al final del cuerpo -->
+<script src="registrarse.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Socio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css">
+    <link rel="stylesheet" href="css/antd.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-docx-js/0.5.0/html-docx.js"></script>
+
+</head>
+<style>
+    .TableContainer {
+        max-height: 1500px;
+        overflow-y: auto;
+        overflow-x: auto;
+        width: 2000px; /* Ajusta el valor según tus necesidades */
+    }
+
+    .Crud_table {
+        table-layout: auto;
+        width: 100%; /* Haz que la tabla ocupe el 100% del contenedor */
+    }
+
+    .ant-table-cell {
+        white-space: nowrap;
+    }
+
+    .cajaDelDia {
+        border: solid 2px black;
+        color: #ffff;
+        width: 150px;
+        text-align: center;
+        font-size: 16px;
+        background-color: red;
+        margin-top: 10px;
+    }
+
+    .iptCaja {
+        margin-top: 5px;
+        width: 150px;
+    }
+
+    .cajaDiaInicioBtn {
+        margin-top: 5px;
+        width: 150px;
+    }
+
+    .btnFinCaja {
+        display: none;
+        width: 150px;
+        margin-top: 5px;
+    }
+</style>
+
+<body>
+    <nav style="border-radius: 0%;">
+        <img src="css/Logo.png" alt="Logo">
+        <a href="AgregarSocio.html" class="button">Agregar nuevo socio</a>
+        <a href="PagoCuota.html" class="button">Estado de Cuotas</a>
+        <a href="venta.html" class="button">Ventas</a>
+        <a href="CierreDeCaja.html" class="button">Contabilidad</a>
+        <a href="Merca.html" class="button">Mercaderia</a>
+        <br>
+        <br>
+        <a href="Acerca.html" class="button">Sobre nosotros</a>
+
+    </nav>
+    <main class="Container" style="border-radius: 0%;">
+        <section class="CrudContainer" style="width: 1140px;">
+            <section class="CrudForm">
+                <h1 class="Crud_title">AGREGAR SOCIOS</h1>
+                <form class="Crud_form" id="FormRegister">
+                    <input type="text" placeholder="Nombre del socio" class="Form_input" id="IptNombre">
+                    <input type="text" placeholder="Apellido del socio" class="Form_input" id="IptApellido">
+                    <input type="text" placeholder="DNI del socio (máx. 8 dígitos)" class="Form_input" id="IptDni"
+                        maxlength="8">
+                    <label for="IptFechaNacimiento"></label>
+                    <div class="date-picker-container">
+                        <input type="date" id="IptFechaNacimiento" class="Form_input" />
+                    </div>
+                    <select id="IptCategoriaFutbol" name="IptCategoriaFutbol">
+                        <option value="" disabled selected>Seleccione una categoría de fútbol</option>
+                        <!-- JavaScript para generar opciones desde 1998 hasta 2100 -->
+                        <script>
+                            const currentYear = new Date().getFullYear();
+                            const startYear = 2000;
+                            const endYear = 2100;
+
+                            for (let year = startYear; year <= endYear; year++) {
+                                document.write(`<option value="${year}">${year}</option>`);
+                            }
+                        </script>
+                    </select>
+                    <select name="IptBloques" id="IptBloques">
+                        <option value="" disabled selected>Seleccione un bloque</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                    <button type="button" class="button button--primary" id="SaveButon" onclick="guardarNuevoSocio()">
+                        Guardar</button>
+                </form>
+            </section>
+            <section class="TableContainer">
+                <div class="FilterContainer ant-row ant-form-inline">
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterBloques" class="ant-form-item-label">Bloques:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterBloques" oninput="filtrarSocios()" placeholder="Bloque"
+                                class="ant-input">
+                        </div>
+                    </div>
+
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterNombre" class="ant-form-item-label">Nombre:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterNombre" oninput="filtrarSocios()" placeholder="Nombre"
+                                class="ant-input">
+                        </div>
+                    </div>
+
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterApellido" class="ant-form-item-label">Apellido:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterApellido" oninput="filtrarSocios()" placeholder="Apellido"
+                                class="ant-input">
+                        </div>
+                    </div>
+
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterDNI" class="ant-form-item-label">DNI:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterDNI" oninput="filtrarSocios()" placeholder="DNI"
+                                class="ant-input">
+                        </div>
+                    </div>
+
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterCategoria" class="ant-form-item-label">Categoría de Fútbol:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterCategoria" oninput="filtrarSocios()"
+                                placeholder="Categoría de Fútbol" class="ant-input">
+                        </div>
+                    </div>
+
+                    <div class="ant-col ant-form-item">
+                        <label for="IptFilterFechaNacimiento" class="ant-form-item-label">Fecha de Nacimiento:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="IptFilterFechaNacimiento" oninput="filtrarSocios()"
+                                placeholder="Fecha de Nacimiento" class="ant-input">
+                        </div>
+                    </div>
+                </div>
+                <table class="ant-table ant-table-bordered ant-table-responsive Crud_table" id="testTable">
+                    <thead>
+                        <tr>
+                            <th class="ant-table-cell" style="width: 10%;">Bloques</th>
+                            <th class="ant-table-cell" style="width: 5%;">Nombre</th>
+                            <th class="ant-table-cell" style="width: 5%;">Apellido</th>
+                            <th class="ant-table-cell" style="width: 5%;">DNI</th>
+                            <th class="ant-table-cell" style="width: 5%;">Cat. Fútbol</th>
+                            <th class="ant-table-cell" style="width: 15%;">F. de Nac.</th>
+                            <th class="ant-table-cell" style="width: 5%;">F. de Insc.</th>
+                            <th class="ant-table-cell" style="width: 5%;">Eliminar</th>
+                            <button type="button" class="button button--primary" onclick="tableToExcel('testTable', 'W3C Example Table')" value="Exportar a Excel">Exportar a Excel</button>
+                        </tr>
+                    </thead>
+                    <tbody class="ant-table-tbody" id="TableBody"></tbody>
+                </table>
+            </section>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.js"></script>
+    <script src="AgregarSocio.js"></script>
+    <script src="SociosUnion.js"></script>
+
+
+</body>
+
+</html>

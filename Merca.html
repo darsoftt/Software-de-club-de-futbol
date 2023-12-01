@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Sistema de Pago de Cuotas</title>
+    <link rel="stylesheet" type="text/css" href="PagoCuota.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <link rel="stylesheet" href="css/antd.min.css">
+    <style>
+        #titulo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(252, 14, 14, 0.74);
+            border-radius: 20px;
+        }
+
+        h1 {
+            margin-top: 10px;
+        }
+        .TableContainer {
+      max-height: 350px;
+      overflow: auto; /* Agregamos overflow para permitir desplazamiento si el contenido excede la altura máxima */
+    }
+    </style>
+</head>
+
+<body>
+    <nav style="border-radius: 0%;">
+        <img src="css/Logo.png" alt="Logo">
+        <a href="AgregarSocio.html" class="button">Agregar nuevo socio</a>
+        <a href="PagoCuota.html" class="button">Estado de Cuotas</a>
+        <a href="venta.html" class="button">Ventas</a>
+        <a href="CierreDeCaja.html" class="button">Contabilidad</a>
+        <a href="Merca.html" class="button">Mercaderia</a>
+        <br>
+        <br>
+        <a href="Acerca.html" class="button">Sobre nosotros</a>
+    </nav>
+    <aside>
+    </aside>
+    <main>
+        <div id="container"
+            style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <div id="titulo">
+                <h1>Mercaderia</h1>
+            </div>
+            <input type="text" class="Form_input" placeholder="Ingrese el nombre del producto" id="Nombre">
+            <input type="text" class="Form_input" placeholder="Ingrese la descripcion del producto" id="descripcion">
+            <button class="button button--primary" onclick="GuardarMerca()">Guardar</button>
+            <br>
+            <section class="TableContainer">
+                <table class="ant-table ant-table-bordered ant-table-responsive Crud_table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>descripcion</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaMerca">
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <script src="Merca.js"></script>
+</body>
+
+</html>

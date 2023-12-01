@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contabilidad</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css" />
+    <link rel="stylesheet" href="css/antd.min.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .TableContainer {
+            max-height: 400px;
+            /* Ajusta según tus necesidades */
+            overflow-y: auto;
+        }
+        .search{
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <nav style="border-radius: 0%;">
+        <img src="css/Logo.png" alt="Logo">
+        <a href="AgregarSocio.html" class="button">Agregar nuevo socio</a>
+        <a href="PagoCuota.html" class="button">Estado de Cuotas</a>
+        <a href="venta.html" class="button">Ventas</a>
+        <a href="CierreDeCaja.html" class="button">Contabilidad</a>
+        <a href="Merca.html" class="button">Mercaderia</a>
+        <br>
+        <br>
+        <a href="Acerca.html" class="button">Sobre nosotros</a>
+    </nav>
+    <main>
+        <div class="Container">
+            <section class="Crud">
+                <h1 class="Crud_title">Contabilidad</h1>
+                <div class="search">
+                    <!--<div class="container">
+                    <h1>Dinero en caja</h1>
+                     <span id="mostrarDinero">$</span>
+                     <br>
+                     <input type="number" placeholder="Ingrese el dinero actual" id="dinero">
+                     <button class="button button--primary" onclick="GuardarDinero()">guardar</button>
+                    </div> -->
+                    <div>
+                        <input type="text" id="iptFiltrarPorNombre" placeholder="Buscar por nombre">
+                        <button class="button button--primary" onclick="filtrarPorNombreContabilidad();">Buscar</button>
+
+                        <input type="text" id="iptFiltrarPorProducto" placeholder="Buscar por producto">
+                        <button class="button button--primary" onclick="filtrarPorProductoContabilidad();">Buscar</button>
+
+                        <input type="date" id="iptFiltrarPorFecha" placeholder="Buscar por fecha">
+                        <button type="button" class="button button--primary"
+                            onclick="filtrarPorFechaContabilidad();">Buscar</button>
+
+                        <label for="">Desde</label>
+                        <input type="date" id="iptFechaInicio">
+
+                        <label for="">Hasta</label>
+                        <input type="date" id="iptFechaFin">
+
+                        <button class="button button--primary" onclick="filtrarPorRangoDeFechaContabilidad();">Buscar</button>
+                    </div>
+
+                </div>
+                <br>
+                <div id="Excel" class="TableContainer">
+                    <input type="button" class="button" onclick="tableToExcel('testTable', 'W3C Example Table')"
+                        value="Exportar a Excel">
+                    <table id="testTable">
+                        <thead>
+                            <tr>
+                                <th class="Table_header Table_header_fecha">Fecha</th>
+                                <th class="Table_header Table_header_descripcion">Nombre</th>
+                                <th class="Table_header Table_header_descripcion"  id="mercaderiaDescrp">Mercaderia</th>
+                                <th class="Table_header Table_header_descripcion" id="cuotaDescrp">Cuota</th>
+                                <th class="Table_header Table_header_descripcion"  id="seguroDescrp">Seguro</th>
+                                <th class="Table_header Table_header_descripcion" id="totalDescrp">Total</th>
+                                <th class="Table_header Table_header_descripcion">Forma de pago</th>
+                                <th class="Table_header Table_header_descripcion">Descripcion</th>
+                            </tr>
+                        </thead>
+                        <tbody class="Table_body" id="TableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="CierreDeCaja.js"></script>
+</body>
+
+</html>

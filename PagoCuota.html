@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Sistema de Pago de Cuotas</title>
+    <link rel="stylesheet" type="text/css" href="PagoCuota.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@4.18.1/dist/antd.min.css">
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <link rel="stylesheet" href="css/antd.min.css">
+    <style>
+        .titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(252, 14, 14, 0.74);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    </style>
+</head>
+<body>
+    <nav style="border-radius: 0%;">
+        <img src="css/Logo.png" alt="Logo">
+        <a href="AgregarSocio.html" class="button">Agregar nuevo socio</a>
+        <a href="PagoCuota.html" class="button">Estado de Cuotas</a>
+        <a href="venta.html" class="button">Ventas</a>
+        <a href="CierreDeCaja.html" class="button">Contabilidad</a>
+        <a href="Merca.html" class="button">Mercaderia</a>
+        <br>
+        <br>
+        <a href="Acerca.html" class="button">Sobre nosotros</a>
+    </nav>
+    <aside>
+    </aside>
+    <main>
+        <div id="container" style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+            <h1 id="titulo" class="titulo">Estado de Cuotas</h1>
+            <div id="cuotaMensualidad">
+                <!-- Utilizando componente de formulario de Ant Design -->
+                <form class="ant-form ant-form-horizontal">
+                    <div class="ant-form-item">
+                        <label class="ant-form-item-label" for="selectSocio">Buscar por nombre:</label>
+                        <div class="ant-form-item-control">
+                            <div class="ant-form-item-control">
+                                <input type="text" id="nombreSocio" placeholder="Ingrese el nombre completo" oninput="buscarPorNombre()">
+                        </div>
+                    </div>
+                    <div class="ant-form-item">
+                        <label class="ant-form-item-label" for="dniSocio">Buscar por DNI:</label>
+                        <div class="ant-form-item-control">
+                            <input type="text" id="dniSocio" placeholder="Ingrese el DNI sin puntos" oninput="buscarSocioPorDNI()">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="informacionSocio">
+                <h2>Información del Socio</h2>
+                <p><strong>Nombre:</strong> <span id="nombreSocioPoner"></span></p>
+                <p><strong>Apellido:</strong> <span id="apellidoSocio"></span></p>
+                <p><strong>Dni:</strong> <span id="dniSocioInfo"></span></p>
+                <p><strong>Categoria:</strong> <span id="categoriaSocio"></span></p>
+                <p><strong>Bloque:</strong> <span id="bloqueSocio"></span></p>
+                <p><strong>Último Pago:</strong> <span id="ultimoPago"></span></p>
+                <p><strong>Vencimiento de la Cuota:</strong> <span id="vencimientoCuota"></span></p>
+                <!--<p><strong>Dias restantes:</strong> <span id="diasRestantes"></span></p>-->
+                <p><strong>Forma de Pago:</strong> <span id="formaPago"></span></p>
+                <div id="codigoQR"></div> <!-- Contenedor para el código QR -->
+                <div id="botonesPago">
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="PagoCuota.js"></script>
+</body>
+
+</html>
